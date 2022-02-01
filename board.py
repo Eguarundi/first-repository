@@ -26,6 +26,28 @@ class HexBoard:
             print(pref + ' \ '.join([str(item) for item in self.cells[row]]))
             print(pref + horizontal_line)
 
+    def is_blue_win(self):
+        stack = [(0, i) for i in range(self.size) if self.cells[0, i] == 1]
+        visited = set()
+        
+        while len(stack) > 0:
+            curcell = stack.pop()
+            visited.add(curcell)
+            if curcell[0] == self.size - 1:
+                return True
+            
+            for neib in self.neighbours(curcell):
+                if neib not in visited:
+                    stack.append(neib)
+
+        return False
+    
+    def neighbours(self, cell):
+        pass
+    
+    def is_red_win(self):
+        pass
+
 board = HexBoard(5)
 print(type(board))
 print(board.cells)
