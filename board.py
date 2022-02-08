@@ -13,7 +13,7 @@ class HexBoard:
     def make_move(self, row, col):
         self.is_valid_coordinates(row, col)
         if self.cells[row, col] != 0:
-            print('Cell is occuped')
+            print('Cell is occupied')
             return
         self.cells[row, col] = 1 if self.nmoves % 2 else 2
         self.nmoves += 1
